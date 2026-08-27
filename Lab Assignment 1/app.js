@@ -1,4 +1,4 @@
-const isEven = require("./modules/isEven");
+const isEven = require("./modules/isEven") ;
 const logMessage = require("./modules/logger");
 
 logMessage("Application started");

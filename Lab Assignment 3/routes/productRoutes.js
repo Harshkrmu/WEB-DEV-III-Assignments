@@ -1,20 +1,25 @@
-const express = require('express');
-const ctrl = require('../controllers/productController');
-const validateObjectId = require('../middleware/validateObjectId');
+const express = require("express")
+const {
+    createProduct,
+    getProducts,
+    getProductById,
+    updateProduct,
+    updateStock,
+    deleteProduct,
+    getLowStock,
+    getSummary
+} = require("../controllers/productController")
+const { validateId } = require("../middlewares/validateId")
+const router = express.Router()
 
-const router = express.Router();
+router.get("/low-stock", getLowStock)
+router.get("/summary", getSummary)
 
-router.get('/low-stock', ctrl.getLowStock);
-router.get('/summary', ctrl.getCategorySummary);
+router.post("/", createProduct)
+router.get("/", getProducts)
+router.get("/:id", validateId, getProductById)
+router.put("/:id", validateId, updateProduct)
+router.patch("/:id/stock", validateId, updateStock)
+router.delete("/:id", validateId, deleteProduct)
 
-router.route('/').get(ctrl.getProducts).post(ctrl.createProduct);
-
-router.patch('/:id/stock', validateObjectId, ctrl.adjustStock);
-
-router
-  .route('/:id')
-  .get(validateObjectId, ctrl.getProductById)
-  .put(validateObjectId, ctrl.updateProduct)
-  .delete(validateObjectId, ctrl.deleteProduct);
-
-module.exports = router;
+module.exports = router

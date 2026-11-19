@@ -1,10 +1,15 @@
 Assignment 3: Inventory and Data Management System
 
-Name: Harsh
-Roll No: 2501730062
+Name:
+Roll No:
 Course: Web Dev III
+Date:
 
-To Start the server : 'npm start'
+Setup
+1. npm install
+2. Check PORT and MONGO_URI in .env
+3. npm run seed
+4. npm start
 
 Endpoints
 POST   /api/products
@@ -17,4 +22,4 @@ GET    /api/products/low-stock
 GET    /api/products/summary
 
 Query params for GET /api/products
-category, supplier, search, minPrice, maxPrice, inStock, sort, page, limit
+category, search, minPrice, maxPrice, sort, page, limit
